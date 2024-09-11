@@ -24,9 +24,7 @@ public class Turn : MonoBehaviour
             {
 
                 turnVector = new Vector3(0, Input.GetAxis("Horizontal"), 0) * (turnSpeed * forwardVelocity.magnitude);
-                //Debug.Log(string.Format("Forward velocity is: {0}", forwardVelocity));
                 //Debug.Log(string.Format("Forward velocity length is: {0}", forwardVelocity.magnitude));
-                //Debug.Log(string.Format("Adjusted turn speed is: {0}", turnSpeed * forwardVelocity.magnitude));
 
                 // Reversing the turn direction if moving backwards
                 if (Input.GetAxis("Vertical") < 0) { currentTurnDirection = -1; }

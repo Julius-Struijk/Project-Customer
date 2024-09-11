@@ -322,14 +322,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HoverCraft
       objectReference: {fileID: 0}
-    - target: {fileID: 3608284077561535624, guid: 974e601e2d3fd8e4f8fbe4e5e6d819d7, type: 3}
-      propertyPath: turnSpeed
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3608284077561535625, guid: 974e601e2d3fd8e4f8fbe4e5e6d819d7, type: 3}
-      propertyPath: maxSpeed
-      value: 45
-      objectReference: {fileID: 0}
     - target: {fileID: 3608284077561535626, guid: 974e601e2d3fd8e4f8fbe4e5e6d819d7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.1860008
