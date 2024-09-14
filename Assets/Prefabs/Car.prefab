@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 3608284077561535624}
   - component: {fileID: 3608284077561535630}
   - component: {fileID: 8918922034220415788}
+  - component: {fileID: 4941204745918824052}
   m_Layer: 0
   m_Name: Car
   m_TagString: Player
@@ -260,6 +261,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 35
+--- !u!114 &4941204745918824052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3608284077561535616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85d56d0d105793e44bffffe7fbb3abfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 120
+  roadVariants:
+  - {fileID: 2796156626270332113, guid: 842e9d09dc8425b4997aa441863773d9, type: 3}
 --- !u!1 &3659077680539147047
 GameObject:
   m_ObjectHideFlags: 0

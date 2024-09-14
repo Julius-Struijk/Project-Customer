@@ -21,7 +21,6 @@ public class SpeedLimiter : MonoBehaviour
 
         if(rb.velocity == new Vector3(0, 0, 0))
         {
-            Debug.Log("Velocity is zero.");
             if(OnVelocityZero != null) { OnVelocityZero(); }
         }
     }
