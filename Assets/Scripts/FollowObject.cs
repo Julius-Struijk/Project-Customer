@@ -5,6 +5,8 @@ using UnityEngine;
 public class FollowObject : MonoBehaviour
 {
     [SerializeField] Transform target;
+    [SerializeField] bool oneWay;
+    RoadGenerator rg;
 
     Vector3 offset;
 
@@ -12,12 +14,21 @@ public class FollowObject : MonoBehaviour
     void Start()
     {
         offset = transform.position - target.position;
+        rg = target.GetComponent<RoadGenerator>();
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.position = target.position + target.rotation * offset;
-        transform.rotation = target.rotation;
+        if(!oneWay)
+        {
+            transform.position = target.position + target.rotation * offset;
+            transform.rotation = target.rotation;
+        }
+        else if (rg != null && rg.directionOfMovement.z > 0.1f)
+        {
+            transform.position = target.position + offset;
+            Debug.Log("Moving invisible wall to: " + transform.position);
+        }
     }
 }

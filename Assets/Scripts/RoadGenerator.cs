@@ -7,7 +7,13 @@ public class RoadGenerator : MonoBehaviour
     Rigidbody rb;
     RaycastHit hitInfo;
     RaycastHit prevHitInfo;
-    [SerializeField] int distance = 150;
+    Vector3 prevCarPosition;
+    Vector3 spawnRaycastPosition;
+    Vector3 removeRaycastPosition;
+    public Vector3 directionOfMovement { private set; get; }
+
+    [SerializeField] int distance = 120;
+    int removeDistance;
     [SerializeField] List<GameObject> roadVariants;
     int spawnOverlap = 1;
 
@@ -15,38 +21,46 @@ public class RoadGenerator : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        prevCarPosition = rb.position;
+        removeDistance = distance * 2;
     }
 
     void FixedUpdate()
     {
 
-        // Spawning a new road when the raycast doesn't detect a road.
-        Vector3 spawnRaycastPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + distance);
+        //Debug.Log(string.Format("Rotation: {0}", transform.rotation.y));
+        directionOfMovement = rb.position - prevCarPosition;
+        Debug.Log(string.Format("Direction of movement: {0}", directionOfMovement));
 
-        // Removing roads when they get too far from the player via a raycast that checks if there is a road past a certain distance.
-        Vector3 removeRaycastPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z - distance);
-
-
-        Debug.Log(string.Format("Rotation: {0}", transform.rotation.y));
-        // Switching which direction roads are generated in depending on the rotation of the player.
-        if ((transform.rotation.y < 0.5 && transform.rotation.y > -0.5))
+        if (directionOfMovement != new Vector3(0, 0, 0))
         {
-            SpawnRoad(spawnRaycastPosition);
-            DeleteRoad(removeRaycastPosition);
+            // Switching which direction roads are generated in depending on the movement direction of the player.
+            if (directionOfMovement.z > 0.1f)
+            {
+                // Spawning a new road when the raycast doesn't detect a road.
+                spawnRaycastPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + distance);
+                // Removing roads when they get too far from the player via a raycast that checks if there is a road past a certain distance.
+                removeRaycastPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z - removeDistance);
+
+                SpawnRoad(spawnRaycastPosition, directionOfMovement);
+                DeleteRoad(removeRaycastPosition);
+            }
+            else
+            {
+                spawnRaycastPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z - distance);
+                removeRaycastPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + removeDistance);
+
+                SpawnRoad(spawnRaycastPosition, directionOfMovement);
+                DeleteRoad(removeRaycastPosition);
+            }
         }
-        //else
-        //{
-        //    SpawnRoad(removeRaycastPosition);
-        //    DeleteRoad(spawnRaycastPosition);
-        //}
+        else { Debug.Log("Car not moving."); }
 
 
-
-
-
+        prevCarPosition = rb.position;
     }
 
-    void SpawnRoad(Vector3 raycastPosition)
+    void SpawnRoad(Vector3 raycastPosition, Vector3 movementDirection)
     {
         if (Physics.Raycast(raycastPosition, transform.up * -1, out hitInfo))
         {
@@ -60,9 +74,17 @@ public class RoadGenerator : MonoBehaviour
         {
             Debug.Log(string.Format("Didn't find anything at {0}.", raycastPosition));
             GameObject roadToSpawn = roadVariants[Random.Range(0, roadVariants.Count)];
-            Vector3 spawnPosition = new Vector3(prevHitInfo.transform.position.x, prevHitInfo.transform.position.y, prevHitInfo.transform.position.z - spawnOverlap + roadToSpawn.transform.localScale.z);
-            Instantiate(roadToSpawn, spawnPosition, prevHitInfo.transform.rotation);
-            Debug.Log(string.Format("Spawned new road at {0}.", spawnPosition));
+            if (prevHitInfo.transform != null)
+            {
+                // Changing the z position of where the road is spawned depending on the movement direction.
+                float roadZposition = prevHitInfo.transform.position.z - spawnOverlap + roadToSpawn.transform.localScale.z;
+                if(movementDirection.z < -0.1f) { roadZposition = prevHitInfo.transform.position.z + spawnOverlap - roadToSpawn.transform.localScale.z; }
+
+                Vector3 spawnPosition = new Vector3(prevHitInfo.transform.position.x, prevHitInfo.transform.position.y, roadZposition);
+                Instantiate(roadToSpawn, spawnPosition, prevHitInfo.transform.rotation);
+                Debug.Log(string.Format("Spawned new road at {0}.", spawnPosition));
+            }
+            else { Debug.Log("Hit info is null."); }
         }
     }
 
