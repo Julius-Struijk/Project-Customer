@@ -236,6 +236,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4941204745918824052, guid: 974e601e2d3fd8e4f8fbe4e5e6d819d7, type: 3}
+      propertyPath: distance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4941204745918824052, guid: 974e601e2d3fd8e4f8fbe4e5e6d819d7, type: 3}
       propertyPath: spawnDistance
       value: 120
       objectReference: {fileID: 0}
@@ -750,6 +754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 369863258}
+  oneWay: 0
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
