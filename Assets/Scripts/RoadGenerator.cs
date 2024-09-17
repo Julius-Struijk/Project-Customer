@@ -28,9 +28,7 @@ public class RoadGenerator : MonoBehaviour
     void FixedUpdate()
     {
 
-        //Debug.Log(string.Format("Rotation: {0}", transform.rotation.y));
         directionOfMovement = rb.position - prevCarPosition;
-        Debug.Log(string.Format("Direction of movement: {0}", directionOfMovement));
 
         if (directionOfMovement != new Vector3(0, 0, 0))
         {
@@ -54,8 +52,6 @@ public class RoadGenerator : MonoBehaviour
                 DeleteRoad(removeRaycastPosition);
             }
         }
-        else { Debug.Log("Car not moving."); }
-
 
         prevCarPosition = rb.position;
     }
