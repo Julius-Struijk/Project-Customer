@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ShowScore : MonoBehaviour
+public class ScoreText : MonoBehaviour
 {
     TextMeshProUGUI scoreText;
-    int totalScore = 0;
 
     private void Awake()
     {
-        ManageScore.OnScoreChange += ScoreUpdate;
+        ScoreBar.OnScoreStageChange += StageUpdate;
     }
 
     // Start is called before the first frame update
@@ -19,17 +18,16 @@ public class ShowScore : MonoBehaviour
         scoreText = GetComponent<TextMeshProUGUI>();
     }
 
-    void ScoreUpdate(int score)
+    void StageUpdate(string stage)
     {
-        if(scoreText != null)
+        if (scoreText != null)
         {
-            totalScore += score;
-            scoreText.text = "Score: " + totalScore;
+            scoreText.text = stage;
         }
     }
 
     private void OnDestroy()
     {
-        ManageScore.OnScoreChange -= ScoreUpdate;
+        ScoreBar.OnScoreStageChange -= StageUpdate;
     }
 }
