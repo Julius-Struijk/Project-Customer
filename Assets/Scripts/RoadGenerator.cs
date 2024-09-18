@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class RoadGenerator : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class RoadGenerator : MonoBehaviour
     Vector3 prevCarPosition;
     Vector3 spawnRaycastPosition;
     Vector3 removeRaycastPosition;
+
+    public static event Action<GameObject, Vector3> OnRoadSpawn;
+
     public Vector3 directionOfMovement { private set; get; }
 
     [SerializeField] int distance = 120;
@@ -69,7 +73,7 @@ public class RoadGenerator : MonoBehaviour
         else
         {
             Debug.Log(string.Format("Didn't find anything at {0}.", raycastPosition));
-            GameObject roadToSpawn = roadVariants[Random.Range(0, roadVariants.Count)];
+            GameObject roadToSpawn = roadVariants[UnityEngine.Random.Range(0, roadVariants.Count)];
             if (prevHitInfo.transform != null)
             {
                 // Changing the z position of where the road is spawned depending on the movement direction.
@@ -79,6 +83,9 @@ public class RoadGenerator : MonoBehaviour
                 Vector3 spawnPosition = new Vector3(prevHitInfo.transform.position.x, prevHitInfo.transform.position.y, roadZposition);
                 Instantiate(roadToSpawn, spawnPosition, prevHitInfo.transform.rotation);
                 Debug.Log(string.Format("Spawned new road at {0}.", spawnPosition));
+
+                //After spawning a road piece, the delegate will be fired and there's a chance a obstacle will be spawned as well.
+                if(OnRoadSpawn != null) { OnRoadSpawn(roadToSpawn, spawnPosition); }
             }
             else { Debug.Log("Hit info is null."); }
         }
