@@ -62,13 +62,11 @@ public class RoadGenerator : MonoBehaviour
 
     void SpawnRoad(Vector3 raycastPosition, Vector3 movementDirection)
     {
-        if (Physics.Raycast(raycastPosition, transform.up * -1, out hitInfo))
+
+        if (Physics.Raycast(raycastPosition, transform.up * -1, out hitInfo) && hitInfo.collider.CompareTag("Road"))
         {
-            if (hitInfo.collider.CompareTag("Road"))
-            {
-                //Debug.Log(string.Format("There is a road infront of the player at: {0}.", hitInfo.transform.position));
-                prevHitInfo = hitInfo;
-            }
+            //Debug.Log(string.Format("There is a road infront of the player at: {0}.", hitInfo.transform.position));
+            prevHitInfo = hitInfo;
         }
         else
         {
@@ -78,14 +76,14 @@ public class RoadGenerator : MonoBehaviour
             {
                 // Changing the z position of where the road is spawned depending on the movement direction.
                 float roadZposition = prevHitInfo.transform.position.z - spawnOverlap + roadToSpawn.transform.localScale.z;
-                if(movementDirection.z < -0.1f) { roadZposition = prevHitInfo.transform.position.z + spawnOverlap - roadToSpawn.transform.localScale.z; }
+                if (movementDirection.z < -0.1f) { roadZposition = prevHitInfo.transform.position.z + spawnOverlap - roadToSpawn.transform.localScale.z; }
 
                 Vector3 spawnPosition = new Vector3(prevHitInfo.transform.position.x, prevHitInfo.transform.position.y, roadZposition);
                 Instantiate(roadToSpawn, spawnPosition, prevHitInfo.transform.rotation);
                 Debug.Log(string.Format("Spawned new road at {0}.", spawnPosition));
 
                 //After spawning a road piece, the delegate will be fired and there's a chance a obstacle will be spawned as well.
-                if(OnRoadSpawn != null) { OnRoadSpawn(roadToSpawn, spawnPosition); }
+                if (OnRoadSpawn != null) { OnRoadSpawn(roadToSpawn, spawnPosition); }
             }
             else { Debug.Log("Hit info is null."); }
         }
