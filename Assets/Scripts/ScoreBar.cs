@@ -7,7 +7,8 @@ public class ScoreBar : MonoBehaviour
     // Using a custom dictionary to have it show up in the editor.
     [SerializeField] UDictionary<int, string> scoreThresholds;
 
-    public static event Action<string> OnScoreStageChange;
+    // The text is used for the UI while the number is used for switching stages.
+    public static event Action<string, int> OnScoreStageChange;
 
     float maxScore;
     float totalScore = 0;
@@ -26,7 +27,8 @@ public class ScoreBar : MonoBehaviour
         if (totalScore == 0 && OnScoreStageChange != null)
         {
             Debug.Log("Updateing stage UI to: " + scoreThresholds.Values[scoreStageCounter]);
-            OnScoreStageChange(scoreThresholds.Values[scoreStageCounter]);
+            // ScoreStageCounter is decreased by one because it immediately increases after picking up the first coin.
+            OnScoreStageChange(scoreThresholds.Values[scoreStageCounter], scoreStageCounter - 1);
         }
 
         totalScore += score;

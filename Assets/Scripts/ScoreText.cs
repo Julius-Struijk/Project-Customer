@@ -18,11 +18,11 @@ public class ScoreText : MonoBehaviour
         scoreText = GetComponent<TextMeshProUGUI>();
     }
 
-    void StageUpdate(string stage)
+    void StageUpdate(string stageText, int stageNumber)
     {
         if (scoreText != null)
         {
-            scoreText.text = stage;
+            scoreText.text = stageText;
         }
     }
 

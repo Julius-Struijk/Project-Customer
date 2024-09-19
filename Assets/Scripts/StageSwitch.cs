@@ -9,23 +9,30 @@ public class StageSwitch : MonoBehaviour
     GameObject regularObject;
     GameObject neonObject;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
+    {
+        ScoreBar.OnScoreStageChange += IncreaseStage;
+    }
+
+    void IncreaseStage(string stageText, int stageNumber)
     {
 
-        // Change stage based on score or distance.
-        // Temporary increase stage implementation
-        if (Input.GetKeyDown(KeyCode.Q) && stageCounter < modeObjectPairs.Count)
+        // Change stage based on score.
+        if (stageNumber < modeObjectPairs.Count && stageNumber >= 0)
         {
             // Assign the objects for the stage.
-            regularObject = modeObjectPairs.Keys[stageCounter];
-            neonObject = modeObjectPairs.Values[stageCounter];
+            regularObject = modeObjectPairs.Keys[stageNumber];
+            neonObject = modeObjectPairs.Values[stageNumber];
             stageCounter++;
 
-            Debug.Log("Going up to stage " + stageCounter);
+            Debug.Log("Going up to stage " + stageNumber);
             regularObject.SetActive(false);
             neonObject.SetActive(true);
         }
+    }
+
+    void DecreaseStage()
+    {
         if (Input.GetKeyDown(KeyCode.E) && stageCounter > 0)
         {
             stageCounter--;
@@ -36,6 +43,10 @@ public class StageSwitch : MonoBehaviour
             neonObject.SetActive(false);
             regularObject.SetActive(true);
         }
+    }
 
+    private void OnDestroy()
+    {
+        ScoreBar.OnScoreStageChange -= IncreaseStage;
     }
 }
