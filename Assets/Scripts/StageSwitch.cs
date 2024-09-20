@@ -11,10 +11,11 @@ public class StageSwitch : MonoBehaviour
 
     private void Start()
     {
-        ScoreBar.OnScoreStageChange += IncreaseStage;
+        ScoreBar.OnScoreStageChange += IncreaseDrugStage;
+        ChildEffect.OnSlowMotion += DrugStageToZero;
     }
 
-    void IncreaseStage(string stageText, int stageNumber)
+    void IncreaseDrugStage(string stageText, int stageNumber)
     {
 
         // Change stage based on score.
@@ -31,9 +32,9 @@ public class StageSwitch : MonoBehaviour
         }
     }
 
-    void DecreaseStage()
+    void DrugStageToZero()
     {
-        if (Input.GetKeyDown(KeyCode.E) && stageCounter > 0)
+        while(stageCounter > 0)
         {
             stageCounter--;
             regularObject = modeObjectPairs.Keys[stageCounter];
@@ -47,6 +48,7 @@ public class StageSwitch : MonoBehaviour
 
     private void OnDestroy()
     {
-        ScoreBar.OnScoreStageChange -= IncreaseStage;
+        ScoreBar.OnScoreStageChange -= IncreaseDrugStage;
+        ChildEffect.OnSlowMotion -= DrugStageToZero;
     }
 }

@@ -70,7 +70,7 @@ public class RoadGenerator : MonoBehaviour
         }
         else
         {
-            Debug.Log(string.Format("Didn't find anything at {0}.", raycastPosition));
+            //Debug.Log(string.Format("Didn't find anything at {0}.", raycastPosition));
             GameObject roadToSpawn = roadVariants[UnityEngine.Random.Range(0, roadVariants.Count)];
             if (prevHitInfo.transform != null)
             {
@@ -80,12 +80,12 @@ public class RoadGenerator : MonoBehaviour
 
                 Vector3 spawnPosition = new Vector3(prevHitInfo.transform.position.x, prevHitInfo.transform.position.y, roadZposition);
                 Instantiate(roadToSpawn, spawnPosition, prevHitInfo.transform.rotation);
-                Debug.Log(string.Format("Spawned new road at {0}.", spawnPosition));
+                //Debug.Log(string.Format("Spawned new road at {0}.", spawnPosition));
 
                 //After spawning a road piece, the delegate will be fired and there's a chance a obstacle will be spawned as well.
                 if (OnRoadSpawn != null) { OnRoadSpawn(roadToSpawn, spawnPosition); }
             }
-            else { Debug.Log("Hit info is null."); }
+            //else { Debug.Log("Hit info is null."); }
         }
     }
 
