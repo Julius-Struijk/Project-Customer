@@ -34,7 +34,7 @@ public class ScoreBar : MonoBehaviour
         totalScore += score;
         Debug.Log(string.Format("Score: {0} Max score: {1}", totalScore, maxScore));
 
-        transform.localScale = new Vector3(totalScore / maxScore, 1, 1);
+        if(totalScore <= maxScore) { transform.localScale = new Vector3(totalScore / maxScore, 1, 1); }
 
         if (totalScore >= maxScore && scoreStageCounter != scoreThresholds.Count - 1)
         {
