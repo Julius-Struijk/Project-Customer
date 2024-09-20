@@ -7,24 +7,23 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody rb;
 
-    public float moveSpeed;
-    public float groundDrag;
+    [SerializeField] float moveSpeed;
+    [SerializeField] float groundDrag;
     float horizontalInput;
     float verticalInput;
 
-    public Transform PlayerOrientation;
     Vector3 moveDirection;
 
-    public float playerHeight;
-    public LayerMask ThisIsGround;
+    [SerializeField] float playerHeight;
+    [SerializeField] LayerMask ThisIsGround;
     bool isGrounded;
 
-    public AudioSource footstepsSound;
+    [SerializeField] AudioSource footstepsSound;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
+        //rb.freezeRotation = true;
     }
 
     void Update()
@@ -47,13 +46,16 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
 
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        if(footstepsSound != null)
         {
-            footstepsSound.enabled = true;
-        }
-        else
-        {
-            footstepsSound.enabled = false;
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+            {
+                footstepsSound.enabled = true;
+            }
+            else
+            {
+                footstepsSound.enabled = false;
+            }
         }
     }
 
@@ -64,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-        moveDirection = PlayerOrientation.forward * verticalInput + PlayerOrientation.right * horizontalInput;
+        moveDirection = transform.forward * verticalInput + transform.right * horizontalInput;
 
         rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
     }

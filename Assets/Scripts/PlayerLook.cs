@@ -5,10 +5,9 @@ using UnityEngine;
 public class PlayerLook : MonoBehaviour
 {
 
-    public float sensX;
-    public float sensY;
-
-    public Transform PlayerOrientation;
+    [SerializeField] float sensX;
+    [SerializeField] float sensY;
+    [SerializeField] Transform PlayerOrientation;
 
     float xRotation;
     float yRotation;
@@ -31,8 +30,8 @@ public class PlayerLook : MonoBehaviour
         xRotation -= mouseY;
 
         xRotation = Mathf.Clamp(xRotation, -90f, 80f);
-        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        PlayerOrientation.rotation = Quaternion.Euler(0, yRotation, 0);
+        transform.rotation = Quaternion.Euler(0, yRotation, 0);
+        PlayerOrientation.rotation = Quaternion.Euler(xRotation, yRotation, 0);
 
     }
 }

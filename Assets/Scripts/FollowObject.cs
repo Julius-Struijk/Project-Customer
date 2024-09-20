@@ -28,7 +28,6 @@ public class FollowObject : MonoBehaviour
         else if (rg != null && rg.directionOfMovement.z > 0.1f)
         {
             transform.position = target.position + offset;
-            Debug.Log("Moving invisible wall to: " + transform.position);
         }
     }
 }
