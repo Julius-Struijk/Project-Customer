@@ -7,6 +7,7 @@ public class SpawnObstacle : MonoBehaviour
 
     [SerializeField] int spawnChancePercentage = 50;
     [SerializeField] List<GameObject> obstacles;
+    [SerializeField] UDictionary<GameObject, int> obstaclesToBeAdded;
     
     float verticalBuffer = 0.5f;
 
@@ -14,6 +15,7 @@ public class SpawnObstacle : MonoBehaviour
     void Start()
     {
         RoadGenerator.OnRoadSpawn += ObstacleSpawn;
+        ScoreBar.OnScoreStageChange += AddObstacles;
     }
 
     void ObstacleSpawn(GameObject road, Vector3 roadPosition)
@@ -34,12 +36,36 @@ public class SpawnObstacle : MonoBehaviour
 
             Vector3 spawnPosition = new Vector3(spawnX , spawnY, spawnZ);
             Instantiate(obstacleToSpawn, spawnPosition, obstacleToSpawn.transform.rotation);
-            Debug.Log("Spawned new obstacle at: " + spawnPosition);
+            Debug.Log(string.Format("Spawned new obstacle {0} at: {1}", obstacleToSpawn.name, spawnPosition));
+        }
+    }
+
+    void AddObstacles(string stageName, int stageNumber)
+    {
+        if(obstaclesToBeAdded != null)
+        {
+            //foreach (KeyValuePair<int, GameObject> obstacle in obstaclesToBeAdded)
+            for (int i = obstaclesToBeAdded.Keys.Count - 1; i >= 0; i--)
+            {
+                GameObject spawnObstacle = obstaclesToBeAdded.Keys[i];
+                int spawnStage = obstaclesToBeAdded.Values[i];
+
+                // Ends the loop if the spawnstage of the obstacle is higher than the current stage number.
+                if (spawnStage > stageNumber) { break; }
+                else
+                {
+                    Debug.Log(string.Format("Adding {0} to the obstacle pool at stage {1}", spawnObstacle.name, spawnStage));
+                    obstacles.Add(spawnObstacle);
+                    // Removing the obstacle from the to be spawned list since it's now in the main list.
+                    obstaclesToBeAdded.Remove(spawnObstacle);
+                }
+            }
         }
     }
 
     private void OnDestroy()
     {
         RoadGenerator.OnRoadSpawn -= ObstacleSpawn;
+        ScoreBar.OnScoreStageChange -= AddObstacles;
     }
 }
