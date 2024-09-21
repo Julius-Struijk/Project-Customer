@@ -555,6 +555,10 @@ MonoBehaviour:
   spawnChancePercentage: 66
   obstacles:
   - {fileID: 3083783601260190548, guid: d93f8eef9849d184eb12772b5435dc4a, type: 3}
+  obstaclesToBeAdded:
+    keys:
+    - {fileID: 3083783601260190548, guid: 56ff56bd9e023624a8160f37fb0fe999, type: 3}
+    values: 04000000
 --- !u!114 &512579830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1916,7 +1920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreThresholds:
-    keys: 01000000010000000100000002000000020000000200000003000000
+    keys: 01000000020000000300000004000000050000000600000007000000
     values:
     - F
     - E
