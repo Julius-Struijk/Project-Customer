@@ -9,15 +9,17 @@ public class SceneSwitcher : MonoBehaviour
     void Start()
     {
         EnterCar.OnEnterCar += LoadScene;
+        ShowBlackScreen.OnBlackout += LoadScene;
     }
 
-    void LoadScene()
+    void LoadScene(int scene)
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(scene);
     }
 
     private void OnDestroy()
     {
         EnterCar.OnEnterCar -= LoadScene;
+        ShowBlackScreen.OnBlackout -= LoadScene;
     }
 }

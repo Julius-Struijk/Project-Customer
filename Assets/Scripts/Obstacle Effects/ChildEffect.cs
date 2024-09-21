@@ -6,6 +6,8 @@ using System;
 public class ChildEffect : MonoBehaviour
 {
     public static event Action OnSlowMotion;
+
+    // int is used as the scene number that has to be loaded.
     public static event Action OnChildHit;
 
     [SerializeField] float slowDownFactor = 0.2f;
@@ -37,6 +39,10 @@ public class ChildEffect : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            // Incase slow motion isn't back to normal when the player collides with the child, it is set to normal here.
+            Time.timeScale = 1;
+            Time.fixedDeltaTime = 0.02f;
+
             Debug.Log("Child hit");
             if (OnChildHit != null) { OnChildHit(); }
         }

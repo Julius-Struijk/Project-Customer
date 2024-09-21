@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class ShowBlackScreen : MonoBehaviour
 {
+    // Delegate for the scene switch is on the blackout to ensure it happens before the scene switches.
+    public static event Action<int> OnBlackout;
+
     CanvasRenderer canvas;
     [SerializeField] float blinkSpeed = 4f;
     [SerializeField] int maxBlinkStrength = 250;
@@ -14,7 +18,7 @@ public class ShowBlackScreen : MonoBehaviour
     private void Start()
     {
         canvas = GetComponent<CanvasRenderer>();
-        //canvas.SetAlpha(0);
+        canvas.SetAlpha(0);
 
         StageSwitch.OnVisualStageChange += StartBlink;
         ChildEffect.OnChildHit += Blackout;
@@ -57,6 +61,8 @@ public class ShowBlackScreen : MonoBehaviour
     {
         Debug.Log("Activating blackout");
         canvas.SetAlpha(255);
+
+        if(OnBlackout != null) { OnBlackout(0); }
     }
 
     private void OnDestroy()
