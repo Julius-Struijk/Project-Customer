@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class StageSwitch : MonoBehaviour
 {
+    public static event Action OnVisualStageChange;
+
     [SerializeField] UDictionary<GameObject, GameObject> modeObjectPairs;
     int stageCounter = 0;
     GameObject regularObject;
@@ -21,6 +24,9 @@ public class StageSwitch : MonoBehaviour
         // Change stage based on score.
         if (stageNumber < modeObjectPairs.Count && stageNumber >= 0)
         {
+            // Trigger blink to hide the stage transition.
+            if (OnVisualStageChange != null) { OnVisualStageChange(); }
+
             // Assign the objects for the stage.
             regularObject = modeObjectPairs.Keys[stageNumber];
             neonObject = modeObjectPairs.Values[stageNumber];
@@ -29,6 +35,7 @@ public class StageSwitch : MonoBehaviour
             Debug.Log("Going up to stage " + stageNumber);
             regularObject.SetActive(false);
             neonObject.SetActive(true);
+
         }
     }
 
