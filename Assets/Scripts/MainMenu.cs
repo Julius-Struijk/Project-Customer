@@ -6,6 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public void Start()
+    {
+        // On reload the cursor is locked and hidden due to the 1st level scene. This reverts it so it works in the main menu.
+        if(!Cursor.visible)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+    }
+
     public void StartGame()
     {
         SceneManager.LoadScene("Level 1");
@@ -13,8 +23,8 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();
         Console.WriteLine("Outta here");
+        Application.Quit();
     }
 
 
