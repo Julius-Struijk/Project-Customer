@@ -33,7 +33,7 @@ public class StageSwitch : MonoBehaviour
             stageCounter++;
 
             Debug.Log("Going up to stage " + stageNumber);
-            regularObject.SetActive(false);
+            if(regularObject != null) { regularObject.SetActive(false); }
             neonObject.SetActive(true);
 
         }
@@ -49,7 +49,7 @@ public class StageSwitch : MonoBehaviour
 
             Debug.Log("Going down to stage " + stageCounter);
             neonObject.SetActive(false);
-            regularObject.SetActive(true);
+            if (regularObject != null) { regularObject.SetActive(true); }
         }
     }
 
