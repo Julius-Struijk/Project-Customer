@@ -23,6 +23,7 @@ public class RoadGenerator : MonoBehaviour
     [SerializeField] int distance = 120;
     int removeDistance;
     [SerializeField] List<GameObject> objectVariants;
+    [SerializeField] GameObject objectParent;
     int spawnOverlap = 1;
 
     // Start is called before the first frame update
@@ -106,7 +107,8 @@ public class RoadGenerator : MonoBehaviour
                 // Won't spawn the object if it's a duplicate in the same position as the previous road piece.
                 if(prevSpawnPosition != null && prevSpawnPosition != spawnPosition)
                 {
-                    Instantiate(objectToSpawn, spawnPosition, prevHitInfo.transform.rotation);
+                    if(objectParent == null) { Instantiate(objectToSpawn, spawnPosition, prevHitInfo.transform.rotation); }
+                    else { Instantiate(objectToSpawn, spawnPosition, prevHitInfo.transform.rotation, objectParent.transform); }
                     Debug.Log(string.Format("Spawned new {0} at {1}.", objectTag, spawnPosition));
                     prevSpawnPosition = spawnPosition;
 
