@@ -13,13 +13,16 @@ public class RoadGenerator : MonoBehaviour
     Vector3 removeRaycastPosition;
     Vector3 prevSpawnPosition;
 
+    GameObject objectToSpawn;
+    string objectTag;
+
     public static event Action<GameObject, Vector3> OnRoadSpawn;
 
     public Vector3 directionOfMovement { private set; get; }
 
     [SerializeField] int distance = 120;
     int removeDistance;
-    [SerializeField] List<GameObject> roadVariants;
+    [SerializeField] List<GameObject> objectVariants;
     int spawnOverlap = 1;
 
     // Start is called before the first frame update
@@ -28,6 +31,11 @@ public class RoadGenerator : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         prevCarPosition = rb.position;
         removeDistance = distance * 2;
+
+        // Get the tag of the object that is being spawned for specific use cases depending on the object.
+        objectToSpawn = objectVariants[UnityEngine.Random.Range(0, objectVariants.Count)];
+        objectTag = objectToSpawn.tag;
+        Debug.Log("Object tag is: " + objectTag);
     }
 
     void FixedUpdate()
@@ -37,74 +45,91 @@ public class RoadGenerator : MonoBehaviour
 
         if (directionOfMovement != new Vector3(0, 0, 0))
         {
-            // Switching which direction roads are generated in depending on the movement direction of the player.
+            // Switching which direction objects are generated in depending on the movement direction of the player.
             if (directionOfMovement.z > 0.1f)
             {
-                // Spawning a new road when the raycast doesn't detect a road.
+                // Spawning a new object when the raycast doesn't detect a object.
                 spawnRaycastPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + distance);
-                // Removing roads when they get too far from the player via a raycast that checks if there is a road past a certain distance.
+                // Removing objects when they get too far from the player via a raycast that checks if there is a object past a certain distance.
                 removeRaycastPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z - removeDistance);
 
-                SpawnRoad(spawnRaycastPosition, directionOfMovement);
-                DeleteRoad(removeRaycastPosition);
+                SpawnObject(spawnRaycastPosition, directionOfMovement);
+                DeleteObject(removeRaycastPosition);
             }
             else
             {
                 spawnRaycastPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z - distance);
                 removeRaycastPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + removeDistance);
 
-                SpawnRoad(spawnRaycastPosition, directionOfMovement);
-                DeleteRoad(removeRaycastPosition);
+                SpawnObject(spawnRaycastPosition, directionOfMovement);
+                DeleteObject(removeRaycastPosition);
             }
         }
 
         prevCarPosition = rb.position;
     }
 
-    void SpawnRoad(Vector3 raycastPosition, Vector3 movementDirection)
+    void SpawnObject(Vector3 raycastPosition, Vector3 movementDirection)
     {
 
-        if (Physics.Raycast(raycastPosition, transform.up * -1, out hitInfo) && hitInfo.collider.CompareTag("Road"))
+        if (Physics.Raycast(raycastPosition, transform.up * -1, out hitInfo) && hitInfo.collider.CompareTag(objectTag))
         {
-            //Debug.Log(string.Format("There is a road infront of the player at: {0}.", hitInfo.transform.position));
+            //Debug.Log(string.Format("There is a {0} infront of the player at: {1}.", objectTag, hitInfo.transform.position));
             prevHitInfo = hitInfo;
         }
         else
         {
-            Debug.Log(string.Format("Didn't find anything at {0}.", raycastPosition));
-            GameObject roadToSpawn = roadVariants[UnityEngine.Random.Range(0, roadVariants.Count)];
+            Debug.Log(string.Format("Didn't find anything at {0} for {1}.", raycastPosition, objectTag));
+            objectToSpawn = objectVariants[UnityEngine.Random.Range(0, objectVariants.Count)];
             if (prevHitInfo.transform != null)
             {
-                // Changing the z position of where the road is spawned depending on the movement direction.
-                float roadZposition = prevHitInfo.transform.position.z - spawnOverlap + roadToSpawn.transform.localScale.z;
-                if (movementDirection.z < -0.1f) { roadZposition = prevHitInfo.transform.position.z + spawnOverlap - roadToSpawn.transform.localScale.z; }
+                // Terrain spawning is based of the size of the terrain instead of the scale.
+                float roadZposition;
+                if(objectTag == "Terrain") {
+                    Terrain terrain = objectToSpawn.GetComponent<Terrain>();
+                    roadZposition = prevHitInfo.transform.position.z + terrain.terrainData.size.z; 
+                }
+                else { roadZposition = prevHitInfo.transform.position.z - spawnOverlap + objectToSpawn.transform.localScale.z; }
+
+                // Changing the z position of where the object is spawned depending on the movement direction.
+                if (movementDirection.z < -0.1f) {
+                    roadZposition = prevHitInfo.transform.position.z + spawnOverlap - objectToSpawn.transform.localScale.z;
+                    if (objectTag == "Terrain")
+                    {
+                        Terrain terrain = objectToSpawn.GetComponent<Terrain>();
+                        roadZposition = prevHitInfo.transform.position.z - terrain.terrainData.size.z;
+                    }
+                }
 
                 Vector3 spawnPosition = new Vector3(prevHitInfo.transform.position.x, prevHitInfo.transform.position.y, roadZposition);
 
-                // Won't spawn the road if it's a duplicate in the same position as the previous road piece.
+                // Won't spawn the object if it's a duplicate in the same position as the previous road piece.
                 if(prevSpawnPosition != null && prevSpawnPosition != spawnPosition)
                 {
-                    Instantiate(roadToSpawn, spawnPosition, prevHitInfo.transform.rotation);
-                    Debug.Log(string.Format("Spawned new road at {0}.", spawnPosition));
+                    Instantiate(objectToSpawn, spawnPosition, prevHitInfo.transform.rotation);
+                    Debug.Log(string.Format("Spawned new {0} at {1}.", objectTag, spawnPosition));
                     prevSpawnPosition = spawnPosition;
 
-                    //After spawning a road piece, the delegate will be fired and there's a chance a obstacle will be spawned as well.
-                    if (OnRoadSpawn != null) { OnRoadSpawn(roadToSpawn, spawnPosition); }
+                    if(objectTag == "Road")
+                    {
+                        //After spawning a road piece, the delegate will be fired and there's a chance a obstacle will be spawned as well.
+                        if (OnRoadSpawn != null) { OnRoadSpawn(objectToSpawn, spawnPosition); }
+                    }
                 }
-                else { Debug.Log("Duplicate road not spawned."); }
+                else { Debug.Log(string.Format("Duplicate {0} not spawned.", objectTag)); }
             }
-            else { Debug.Log("Hit info is null."); }
+            else { Debug.Log(string.Format("Hit info is null for {0}.", objectTag)); }
         }
     }
 
-    void DeleteRoad(Vector3 raycastPosition)
+    void DeleteObject(Vector3 raycastPosition)
     {
         if (Physics.Raycast(raycastPosition, transform.up * -1, out hitInfo))
         {
-            if (hitInfo.collider.CompareTag("Road"))
+            if (hitInfo.collider.CompareTag(objectTag))
             {
                 Destroy(hitInfo.collider.gameObject);
-                Debug.Log(string.Format("Deleted road behind the player at: {0}. Raycast position is: {1}", hitInfo.transform.position, raycastPosition));
+                Debug.Log(string.Format("Deleted spawned {0} behind the player at: {1}. Raycast position is: {2}", objectTag, hitInfo.transform.position, raycastPosition));
             }
         }
     }
