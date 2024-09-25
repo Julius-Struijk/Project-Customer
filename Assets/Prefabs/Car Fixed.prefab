@@ -108,8 +108,8 @@ Transform:
   m_GameObject: {fileID: 2417640778214075770}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.536, y: -0.67887115, z: -0.102}
-  m_LocalScale: {x: 0.5, y: 1, z: 0.33}
+  m_LocalPosition: {x: 0.75, y: -0.67887115, z: -0.96}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6424072157348101229}
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 8918922034220415788}
   - component: {fileID: 4941204745918824052}
   m_Layer: 0
-  m_Name: Car
+  m_Name: Car Fixed
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,7 +151,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 2, y: 1, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2469126980742412324}
@@ -350,6 +350,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wheel
       objectReference: {fileID: 0}
+    - target: {fileID: 5615028130320856435, guid: efd027ceb9dfdab4c999199bf424b4fb, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6623566003652172691, guid: efd027ceb9dfdab4c999199bf424b4fb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -413,14 +417,6 @@ PrefabInstance:
       value: Wheel 4
       objectReference: {fileID: 0}
     - target: {fileID: 6623566003652172691, guid: efd027ceb9dfdab4c999199bf424b4fb, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6623566003652172691, guid: efd027ceb9dfdab4c999199bf424b4fb, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6623566003652172691, guid: efd027ceb9dfdab4c999199bf424b4fb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -480,15 +476,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 5be3dfc7595ddad4ab83c843b1d72c24, type: 3}
       propertyPath: m_LocalScale.x
-      value: 36
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5be3dfc7595ddad4ab83c843b1d72c24, type: 3}
       propertyPath: m_LocalScale.y
-      value: 72
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5be3dfc7595ddad4ab83c843b1d72c24, type: 3}
       propertyPath: m_LocalScale.z
-      value: 35.4
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5be3dfc7595ddad4ab83c843b1d72c24, type: 3}
       propertyPath: m_LocalPosition.x
@@ -636,6 +632,14 @@ PrefabInstance:
     - target: {fileID: 4064008776559074416, guid: efd027ceb9dfdab4c999199bf424b4fb, type: 3}
       propertyPath: m_Name
       value: Wheel 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6623566003652172691, guid: efd027ceb9dfdab4c999199bf424b4fb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6623566003652172691, guid: efd027ceb9dfdab4c999199bf424b4fb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6623566003652172691, guid: efd027ceb9dfdab4c999199bf424b4fb, type: 3}
       propertyPath: m_LocalPosition.x

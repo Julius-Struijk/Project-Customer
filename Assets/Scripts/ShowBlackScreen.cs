@@ -46,20 +46,20 @@ public class ShowBlackScreen : MonoBehaviour
 
         if (Mathf.Clamp(blinkAlpha, 0, maxBlinkStrength) != 0)
         {
-            Debug.Log(string.Format("Setting alpha to: {0}", Mathf.Clamp(blinkAlpha, 0, maxBlinkStrength)));
+            //Debug.Log(string.Format("Setting alpha to: {0}", Mathf.Clamp(blinkAlpha, 0, maxBlinkStrength)));
             canvas.SetAlpha(Mathf.Clamp(blinkAlpha, 0, maxBlinkStrength));
         }
     }
 
     void StartBlink()
     {
-        Debug.Log("Blinking.");
+        //Debug.Log("Blinking.");
         blinkingUp = true;
     }
 
     void Blackout()
     {
-        Debug.Log("Activating blackout");
+        //Debug.Log("Activating blackout");
         canvas.SetAlpha(255);
 
         if(OnBlackout != null) { OnBlackout(0); }
