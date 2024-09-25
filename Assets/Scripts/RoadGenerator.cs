@@ -11,6 +11,7 @@ public class RoadGenerator : MonoBehaviour
     Vector3 prevCarPosition;
     Vector3 spawnRaycastPosition;
     Vector3 removeRaycastPosition;
+    Vector3 prevSpawnPosition;
 
     public static event Action<GameObject, Vector3> OnRoadSpawn;
 
@@ -79,11 +80,18 @@ public class RoadGenerator : MonoBehaviour
                 if (movementDirection.z < -0.1f) { roadZposition = prevHitInfo.transform.position.z + spawnOverlap - roadToSpawn.transform.localScale.z; }
 
                 Vector3 spawnPosition = new Vector3(prevHitInfo.transform.position.x, prevHitInfo.transform.position.y, roadZposition);
-                Instantiate(roadToSpawn, spawnPosition, prevHitInfo.transform.rotation);
-                Debug.Log(string.Format("Spawned new road at {0}.", spawnPosition));
 
-                //After spawning a road piece, the delegate will be fired and there's a chance a obstacle will be spawned as well.
-                if (OnRoadSpawn != null) { OnRoadSpawn(roadToSpawn, spawnPosition); }
+                // Won't spawn the road if it's a duplicate in the same position as the previous road piece.
+                if(prevSpawnPosition != null && prevSpawnPosition != spawnPosition)
+                {
+                    Instantiate(roadToSpawn, spawnPosition, prevHitInfo.transform.rotation);
+                    Debug.Log(string.Format("Spawned new road at {0}.", spawnPosition));
+                    prevSpawnPosition = spawnPosition;
+
+                    //After spawning a road piece, the delegate will be fired and there's a chance a obstacle will be spawned as well.
+                    if (OnRoadSpawn != null) { OnRoadSpawn(roadToSpawn, spawnPosition); }
+                }
+                else { Debug.Log("Duplicate road not spawned."); }
             }
             else { Debug.Log("Hit info is null."); }
         }
