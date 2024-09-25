@@ -2756,6 +2756,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SCORES
       objectReference: {fileID: 0}
+    - target: {fileID: 860096848369115205, guid: 8a2d3282d7f2ac740905642fc1f7015f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5984480879110467271, guid: 8a2d3282d7f2ac740905642fc1f7015f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
