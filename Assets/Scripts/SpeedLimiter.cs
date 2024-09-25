@@ -19,9 +19,18 @@ public class SpeedLimiter : MonoBehaviour
     {
         rb.velocity = new Vector3(Mathf.Clamp(rb.velocity.x, -maxSpeed, maxSpeed), Mathf.Clamp(rb.velocity.y, -maxSpeed, maxSpeed), Mathf.Clamp(rb.velocity.z, -maxSpeed, maxSpeed));
 
-        if(rb.velocity == new Vector3(0, 0, 0))
+        if(Approx(rb.velocity.x, 0) && Approx(rb.velocity.y, 0) && Approx(rb.velocity.z, 0))
         {
-            if(OnVelocityZero != null) { OnVelocityZero(); }
+            if(OnVelocityZero != null) { 
+                OnVelocityZero();
+                Debug.Log("VELOCITY IS ZERO. TIME TO DISABLE BRAKING!");
+            }
         }
+    }
+
+    // If the value is close enough to the required value, it'll return true.
+    static bool Approx(float a, float b, float epsilon = 0.0001f)
+    {
+        return Mathf.Abs(a - b) < epsilon;
     }
 }
