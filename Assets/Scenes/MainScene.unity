@@ -251,7 +251,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1152652432626271227, guid: fdcecfc47cd90ce47a04b1c0086eb995, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -555.42957
+      value: -552.3
       objectReference: {fileID: 0}
     - target: {fileID: 1152652432626271227, guid: fdcecfc47cd90ce47a04b1c0086eb995, type: 3}
       propertyPath: m_LocalPosition.y
@@ -289,17 +289,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3073916067491910357, guid: fdcecfc47cd90ce47a04b1c0086eb995, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3212180548111158577, guid: fdcecfc47cd90ce47a04b1c0086eb995, type: 3}
       propertyPath: m_Name
       value: Neon Terrain
       objectReference: {fileID: 0}
-    - target: {fileID: 3212180548111158577, guid: fdcecfc47cd90ce47a04b1c0086eb995, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3212180548111158577, guid: fdcecfc47cd90ce47a04b1c0086eb995, type: 3}
-      propertyPath: m_TagString
-      value: Terrain
+    - target: {fileID: 9161611626338202539, guid: fdcecfc47cd90ce47a04b1c0086eb995, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -662,7 +662,7 @@ GameObject:
   - component: {fileID: 451061751}
   m_Layer: 0
   m_Name: Regular Terrains
-  m_TagString: Untagged
+  m_TagString: RegTerrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1965,11 +1965,11 @@ GameObject:
   - component: {fileID: 1453285024}
   m_Layer: 0
   m_Name: Neon Terrains
-  m_TagString: Untagged
+  m_TagString: NeonTerrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1453285024
 Transform:
   m_ObjectHideFlags: 0
@@ -2558,6 +2558,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 451061751}
     m_Modifications:
+    - target: {fileID: 5082766113909509294, guid: d02689e6fe0e3614fb57dcce187bc1af, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6238316980740438089, guid: d02689e6fe0e3614fb57dcce187bc1af, type: 3}
       propertyPath: m_LocalPosition.x
       value: -575.9
@@ -2601,10 +2605,6 @@ PrefabInstance:
     - target: {fileID: 7952009954387466318, guid: d02689e6fe0e3614fb57dcce187bc1af, type: 3}
       propertyPath: m_Name
       value: Reg Terrain
-      objectReference: {fileID: 0}
-    - target: {fileID: 7952009954387466318, guid: d02689e6fe0e3614fb57dcce187bc1af, type: 3}
-      propertyPath: m_TagString
-      value: Terrain
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
