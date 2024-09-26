@@ -16,8 +16,9 @@ public class RoadGenerator : MonoBehaviour
     GameObject objectToSpawn;
     string objectTag;
     Terrain terrain;
+    MeshRenderer mr;
 
-    public static event Action<GameObject, Vector3> OnRoadSpawn;
+    public static event Action<MeshRenderer, Vector3> OnRoadSpawn;
 
     public Vector3 directionOfMovement { private set; get; }
 
@@ -92,7 +93,7 @@ public class RoadGenerator : MonoBehaviour
                     roadZposition = prevHitInfo.transform.position.z + terrain.terrainData.size.z;
                 }
                 else {
-                    MeshRenderer mr = objectToSpawn.GetComponent<MeshRenderer>();
+                    mr = objectToSpawn.GetComponent<MeshRenderer>();
                     roadZposition = prevHitInfo.transform.position.z - spawnOverlap + mr.bounds.size.z;
                 }
 
@@ -106,7 +107,7 @@ public class RoadGenerator : MonoBehaviour
                     }
                     else
                     {
-                        MeshRenderer mr = objectToSpawn.GetComponent<MeshRenderer>();
+                        mr = objectToSpawn.GetComponent<MeshRenderer>();
                         roadZposition = prevHitInfo.transform.position.z + spawnOverlap - mr.bounds.size.z;
                     }
                 }
@@ -131,7 +132,7 @@ public class RoadGenerator : MonoBehaviour
                     if(objectTag == "Road")
                     {
                         //After spawning a road piece, the delegate will be fired and there's a chance a obstacle will be spawned as well.
-                        if (OnRoadSpawn != null) { OnRoadSpawn(objectToSpawn, spawnPosition); }
+                        if (OnRoadSpawn != null) { OnRoadSpawn(mr, spawnPosition); }
                     }
                 }
                 //else { Debug.Log(string.Format("Duplicate {0} not spawned.", objectTag)); }
