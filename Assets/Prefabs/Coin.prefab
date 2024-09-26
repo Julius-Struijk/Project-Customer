@@ -121,3 +121,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinScore: 1
+  CoinSound: {fileID: 8300000, guid: 525aa07b28d582047a335ca1f0a0f22e, type: 3}
