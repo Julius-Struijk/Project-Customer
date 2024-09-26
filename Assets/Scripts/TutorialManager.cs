@@ -27,7 +27,7 @@ public class TutorialManager : MonoBehaviour
 
     void Update()
     {
-        if (tutorialActive && canSkip && Input.GetMouseButtonDown(0))
+        if (tutorialActive && canSkip && Input.anyKey)
         {
             StartCoroutine(FadeImageOut());
         }
