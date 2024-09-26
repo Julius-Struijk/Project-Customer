@@ -8,6 +8,8 @@ public class StageSwitch : MonoBehaviour
     public static event Action OnVisualStageChange;
 
     [SerializeField] UDictionary<GameObject, GameObject> modeObjectPairs;
+    [SerializeField] AudioClip[] stageSoundtracks;  // Array to store the soundtracks for each stage
+    private AudioSource audioSource;  // Reference to the AudioSource component
     int stageCounter = 0;
     GameObject regularObject;
     GameObject neonObject;
@@ -16,11 +18,17 @@ public class StageSwitch : MonoBehaviour
     {
         ScoreBar.OnScoreStageChange += IncreaseDrugStage;
         ChildEffect.OnSlowMotion += DrugStageToZero;
+
+        audioSource = GetComponent<AudioSource>();  // Get the AudioSource component
+
+        if (audioSource == null)
+        {
+            Debug.LogError("No AudioSource found on the GameObject. Please add one.");
+        }
     }
 
     void IncreaseDrugStage(string stageText, int stageNumber)
     {
-
         // Change stage based on score.
         if (stageNumber < modeObjectPairs.Count && stageNumber >= 0)
         {
@@ -33,12 +41,12 @@ public class StageSwitch : MonoBehaviour
             stageCounter++;
 
             Debug.Log("Going up to stage " + stageNumber);
+
             if (regularObject != null)
             {
                 // Create an exception for terrain where the visibility is disabled instead of the active status, so they can keep being generated in the background.
                 if (regularObject.CompareTag("RegTerrain") && neonObject.CompareTag("NeonTerrain"))
                 {
-                    // Find all of the children terrain and disable/enable their visibility accordingly.
                     SetTerrainChildren(regularObject, false);
                     SetTerrainChildren(neonObject, true);
                 }
@@ -48,8 +56,17 @@ public class StageSwitch : MonoBehaviour
                     neonObject.SetActive(true);
                 }
             }
-            else { neonObject.SetActive(true); }
+            else
+            {
+                neonObject.SetActive(true);
+            }
 
+            // Play the new soundtrack for the stage.
+            if (stageNumber < stageSoundtracks.Length && audioSource != null)
+            {
+                audioSource.clip = stageSoundtracks[stageNumber];
+                audioSource.Play();
+            }
         }
     }
 
@@ -62,12 +79,11 @@ public class StageSwitch : MonoBehaviour
             neonObject = modeObjectPairs.Values[stageCounter];
 
             Debug.Log("Going down to stage " + stageCounter);
+
             if (regularObject != null)
             {
-                // Create an exception for terrain where the visibility is disabled instead of the active status, so they can keep being generated in the background.
                 if (regularObject.CompareTag("RegTerrain") && neonObject.CompareTag("NeonTerrain"))
                 {
-                    // Find all of the children terrain and disable/enable their visibility accordingly.
                     SetTerrainChildren(neonObject, false);
                     SetTerrainChildren(regularObject, true);
                 }
@@ -77,18 +93,27 @@ public class StageSwitch : MonoBehaviour
                     regularObject.SetActive(true);
                 }
             }
-            else { neonObject.SetActive(false); }
+            else
+            {
+                neonObject.SetActive(false);
+            }
+
+            // Play the new soundtrack for the stage.
+            if (stageCounter < stageSoundtracks.Length && audioSource != null)
+            {
+                audioSource.clip = stageSoundtracks[stageCounter];
+                audioSource.Play();
+            }
         }
     }
 
-    void SetTerrainChildren(GameObject terrainParent, bool visibility) 
+    void SetTerrainChildren(GameObject terrainParent, bool visibility)
     {
         for (int i = 0; i < terrainParent.transform.childCount; i++)
         {
             GameObject child = terrainParent.transform.GetChild(i).gameObject;
             Terrain childTerrain = child.GetComponent<Terrain>();
             childTerrain.enabled = visibility;
-            //Debug.Log(string.Format("Child {0} of {1} terrain set to {2}", terrainParent, i, visibility));
         }
     }
 
