@@ -91,15 +91,23 @@ public class RoadGenerator : MonoBehaviour
                     terrain = objectToSpawn.GetComponent<Terrain>();
                     roadZposition = prevHitInfo.transform.position.z + terrain.terrainData.size.z;
                 }
-                else { roadZposition = prevHitInfo.transform.position.z - spawnOverlap + objectToSpawn.transform.localScale.z; }
+                else {
+                    MeshRenderer mr = objectToSpawn.GetComponent<MeshRenderer>();
+                    roadZposition = prevHitInfo.transform.position.z - spawnOverlap + mr.bounds.size.z;
+                }
 
                 // Changing the z position of where the object is spawned depending on the movement direction.
                 if (movementDirection.z < -0.1f) {
-                    roadZposition = prevHitInfo.transform.position.z + spawnOverlap - objectToSpawn.transform.localScale.z;
+                    
                     if (objectTag == "RegTerrain" || objectTag == "NeonTerrain")
                     {
                         terrain = objectToSpawn.GetComponent<Terrain>();
                         roadZposition = prevHitInfo.transform.position.z - terrain.terrainData.size.z;
+                    }
+                    else
+                    {
+                        MeshRenderer mr = objectToSpawn.GetComponent<MeshRenderer>();
+                        roadZposition = prevHitInfo.transform.position.z + spawnOverlap - mr.bounds.size.z;
                     }
                 }
 

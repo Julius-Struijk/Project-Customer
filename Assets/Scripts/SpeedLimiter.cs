@@ -29,7 +29,7 @@ public class SpeedLimiter : MonoBehaviour
     }
 
     // If the value is close enough to the required value, it'll return true.
-    static bool Approx(float a, float b, float epsilon = 0.0001f)
+    static bool Approx(float a, float b, float epsilon = 0.001f)
     {
         return Mathf.Abs(a - b) < epsilon;
     }
