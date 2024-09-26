@@ -15,6 +15,7 @@ public class RoadGenerator : MonoBehaviour
 
     GameObject objectToSpawn;
     string objectTag;
+    Terrain terrain;
 
     public static event Action<GameObject, Vector3> OnRoadSpawn;
 
@@ -80,24 +81,24 @@ public class RoadGenerator : MonoBehaviour
         }
         else
         {
-            Debug.Log(string.Format("Didn't find anything at {0} for {1}.", raycastPosition, objectTag));
+            //Debug.Log(string.Format("Didn't find anything at {0} for {1}.", raycastPosition, objectTag));
             objectToSpawn = objectVariants[UnityEngine.Random.Range(0, objectVariants.Count)];
             if (prevHitInfo.transform != null)
             {
                 // Terrain spawning is based of the size of the terrain instead of the scale.
                 float roadZposition;
-                if(objectTag == "Terrain") {
-                    Terrain terrain = objectToSpawn.GetComponent<Terrain>();
-                    roadZposition = prevHitInfo.transform.position.z + terrain.terrainData.size.z; 
+                if (objectTag == "RegTerrain" || objectTag == "NeonTerrain") {
+                    terrain = objectToSpawn.GetComponent<Terrain>();
+                    roadZposition = prevHitInfo.transform.position.z + terrain.terrainData.size.z;
                 }
                 else { roadZposition = prevHitInfo.transform.position.z - spawnOverlap + objectToSpawn.transform.localScale.z; }
 
                 // Changing the z position of where the object is spawned depending on the movement direction.
                 if (movementDirection.z < -0.1f) {
                     roadZposition = prevHitInfo.transform.position.z + spawnOverlap - objectToSpawn.transform.localScale.z;
-                    if (objectTag == "Terrain")
+                    if (objectTag == "RegTerrain" || objectTag == "NeonTerrain")
                     {
-                        Terrain terrain = objectToSpawn.GetComponent<Terrain>();
+                        terrain = objectToSpawn.GetComponent<Terrain>();
                         roadZposition = prevHitInfo.transform.position.z - terrain.terrainData.size.z;
                     }
                 }
@@ -108,8 +109,15 @@ public class RoadGenerator : MonoBehaviour
                 if(prevSpawnPosition != null && prevSpawnPosition != spawnPosition)
                 {
                     if(objectParent == null) { Instantiate(objectToSpawn, spawnPosition, prevHitInfo.transform.rotation); }
-                    else { Instantiate(objectToSpawn, spawnPosition, prevHitInfo.transform.rotation, objectParent.transform); }
-                    Debug.Log(string.Format("Spawned new {0} at {1}.", objectTag, spawnPosition));
+                    else 
+                    {
+                        Debug.Log("Setting terrain visibility during stage change.");
+                        // Set the terrain visibility to what the previous terrain was set to.
+                        Terrain prevTerrain = prevHitInfo.collider.gameObject.GetComponent<Terrain>();
+                        terrain.enabled = prevTerrain.enabled;
+                        Instantiate(objectToSpawn, spawnPosition, prevHitInfo.transform.rotation, objectParent.transform); 
+                    }
+                    Debug.Log(string.Format("Spawned new {0} at {1} to {2}.", objectTag, spawnPosition, objectParent));
                     prevSpawnPosition = spawnPosition;
 
                     if(objectTag == "Road")
@@ -118,7 +126,7 @@ public class RoadGenerator : MonoBehaviour
                         if (OnRoadSpawn != null) { OnRoadSpawn(objectToSpawn, spawnPosition); }
                     }
                 }
-                else { Debug.Log(string.Format("Duplicate {0} not spawned.", objectTag)); }
+                //else { Debug.Log(string.Format("Duplicate {0} not spawned.", objectTag)); }
             }
             else { Debug.Log(string.Format("Hit info is null for {0}.", objectTag)); }
         }
