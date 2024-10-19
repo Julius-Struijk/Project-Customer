@@ -25,7 +25,7 @@ public class MainMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Space))
         {
             if (isVideoPlaying)
             {
@@ -72,5 +72,11 @@ public class MainMenu : MonoBehaviour
             cinematicVideo.Stop();
             SceneManager.LoadScene(gameSceneName);
         }
+    }
+
+    private void OnDestroy()
+    {
+        // Removing the video from the function so it doesn't subscribe to the function multiple times if the player reenteres the main menu.
+        cinematicVideo.loopPointReached -= OnCinematicEnd;
     }
 }
