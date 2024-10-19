@@ -1042,7 +1042,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8918922034220415788, guid: 974e601e2d3fd8e4f8fbe4e5e6d819d7, type: 3}
       propertyPath: maxSpeed
-      value: 45
+      value: 55
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1822,7 +1822,7 @@ MonoBehaviour:
   obstaclesToBeAdded:
     keys:
     - {fileID: 3083783601260190548, guid: 56ff56bd9e023624a8160f37fb0fe999, type: 3}
-    values: 05000000
+    values: 04000000
 --- !u!114 &512579830
 MonoBehaviour:
   m_ObjectHideFlags: 0

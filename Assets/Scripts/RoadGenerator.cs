@@ -120,13 +120,13 @@ public class RoadGenerator : MonoBehaviour
                     if(objectParent == null) { Instantiate(objectToSpawn, spawnPosition, prevHitInfo.transform.rotation); }
                     else 
                     {
-                        Debug.Log("Setting terrain visibility during stage change.");
+                        //Debug.Log("Setting terrain visibility during stage change.");
                         // Set the terrain visibility to what the previous terrain was set to.
                         Terrain prevTerrain = prevHitInfo.collider.gameObject.GetComponent<Terrain>();
                         terrain.enabled = prevTerrain.enabled;
                         Instantiate(objectToSpawn, spawnPosition, prevHitInfo.transform.rotation, objectParent.transform); 
                     }
-                    Debug.Log(string.Format("Spawned new {0} at {1} to {2}.", objectTag, spawnPosition, objectParent));
+                    //Debug.Log(string.Format("Spawned new {0} at {1} to {2}.", objectTag, spawnPosition, objectParent));
                     prevSpawnPosition = spawnPosition;
 
                     if(objectTag == "Road")
@@ -148,7 +148,7 @@ public class RoadGenerator : MonoBehaviour
             if (hitInfo.collider.CompareTag(objectTag))
             {
                 Destroy(hitInfo.collider.gameObject);
-                Debug.Log(string.Format("Deleted spawned {0} behind the player at: {1}. Raycast position is: {2}", objectTag, hitInfo.transform.position, raycastPosition));
+                //Debug.Log(string.Format("Deleted spawned {0} behind the player at: {1}. Raycast position is: {2}", objectTag, hitInfo.transform.position, raycastPosition));
             }
         }
     }

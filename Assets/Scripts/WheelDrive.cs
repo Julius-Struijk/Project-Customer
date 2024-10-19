@@ -27,6 +27,7 @@ public class WheelDrive : MonoBehaviour
 
     void Move(float accel)
     {
+        //Disablilng this might make acceleration faster.
         accel = Mathf.Clamp(accel, -1, 1);
         float thrustTorque = accel * torque;
         // If thrust has been changed to reverse but hasn't reached max torque, we turn on the brakes for a fast decellaration.

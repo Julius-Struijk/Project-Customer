@@ -136,4 +136,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b78c17ecc1a93341a6cac1d3cffa83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  torque: 500
+  torque: 650

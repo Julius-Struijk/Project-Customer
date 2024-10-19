@@ -10,7 +10,7 @@ public class SpawnObstacle : MonoBehaviour
     [SerializeField] UDictionary<GameObject, int> obstaclesToBeAdded;
     
     float verticalBuffer = 0.5f;
-    float horizontalBuffer = 2f;
+    float horizontalBuffer = 4f;
 
     // Start is called before the first frame update
     void Start()
