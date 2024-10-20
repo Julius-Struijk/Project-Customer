@@ -1198,6 +1198,7 @@ MonoBehaviour:
     - {fileID: 750890250}
     - {fileID: 908439872}
     - {fileID: 407798083}
+  stageSoundtracks: []
 --- !u!1 &750890250 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3472745042485131742, guid: 09188d733d176c1499aa1681670bca2d, type: 3}
