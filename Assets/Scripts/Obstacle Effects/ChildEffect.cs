@@ -28,6 +28,15 @@ public class ChildEffect : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            //Flip the visibility of the models within the child prefab.
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                GameObject child = transform.GetChild(i).gameObject;
+                // Reverses the state of the child game object.
+                child.SetActive(!child.activeSelf);
+                //Debug.Log(string.Format("Setting child {0} to state: {1}", i, child.activeSelf));
+            }
+
             Debug.Log("Slow motion activated");
             Time.timeScale = slowDownFactor;
             Time.fixedDeltaTime = Time.time * 0.02f;

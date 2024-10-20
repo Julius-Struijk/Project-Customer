@@ -27,8 +27,6 @@ public class FOVChange : MonoBehaviour
             Vector3 forwardVelocity = velocityTools.GetForwardVelocity();
             if (forwardVelocity != new Vector3(0, 0, 0))
             {
-                //Debug.Log(string.Format("Forward velocity from camera length is: {0}", forwardVelocity.magnitude));
-                //Debug.Log(string.Format("FOV change amount is: {0}", fovChangeSpeed * forwardVelocity.magnitude));
                 carCamera.fieldOfView = baseFOV + (forwardVelocity.magnitude * fovChangeSpeed);
             }
         }
