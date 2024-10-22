@@ -11,7 +11,7 @@ public class SpawnObstacle : MonoBehaviour
     [SerializeField] UDictionary<GameObject, int> obstaclesToBeRemoved;
 
     //float verticalBuffer = 1f;
-    float horizontalBuffer = 5f;
+    float horizontalBuffer = 6f;
 
     // Start is called before the first frame update
     void Start()

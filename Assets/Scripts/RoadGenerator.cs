@@ -137,7 +137,7 @@ public class RoadGenerator : MonoBehaviour
                 }
                 //else { Debug.Log(string.Format("Duplicate {0} not spawned.", objectTag)); }
             }
-            else { Debug.Log(string.Format("Hit info is null for {0}.", objectTag)); }
+            //else { Debug.Log(string.Format("Hit info is null for {0}.", objectTag)); }
         }
     }
 
