@@ -1822,7 +1822,9 @@ MonoBehaviour:
   obstaclesToBeAdded:
     keys:
     - {fileID: 3083783601260190548, guid: 56ff56bd9e023624a8160f37fb0fe999, type: 3}
-    values: 04000000
+    - {fileID: 6931524175517771325, guid: cb05d12292457144ebb1e7279a183c55, type: 3}
+    - {fileID: 4793257065431973938, guid: 76f58c7107fcf3745bd15601c52168b4, type: 3}
+    values: 040000000200000002000000
 --- !u!114 &512579830
 MonoBehaviour:
   m_ObjectHideFlags: 0

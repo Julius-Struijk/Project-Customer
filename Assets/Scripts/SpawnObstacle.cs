@@ -9,8 +9,8 @@ public class SpawnObstacle : MonoBehaviour
     [SerializeField] List<GameObject> obstacles;
     [SerializeField] UDictionary<GameObject, int> obstaclesToBeAdded;
     
-    float verticalBuffer = 0.5f;
-    float horizontalBuffer = 4f;
+    float verticalBuffer = 1f;
+    float horizontalBuffer = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +45,6 @@ public class SpawnObstacle : MonoBehaviour
     {
         if(obstaclesToBeAdded != null)
         {
-            //foreach (KeyValuePair<int, GameObject> obstacle in obstaclesToBeAdded)
             for (int i = obstaclesToBeAdded.Keys.Count - 1; i >= 0; i--)
             {
                 GameObject spawnObstacle = obstaclesToBeAdded.Keys[i];
