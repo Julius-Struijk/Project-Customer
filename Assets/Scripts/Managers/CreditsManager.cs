@@ -23,6 +23,15 @@ public class CreditsManager : MonoBehaviour
         creditsMenu.SetActive(false);
     }
 
+    private void Update()
+    {
+        // Skip credits if buttons are pressed.
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Space)) 
+        {
+            if(creditsMenu.activeSelf && !mainMenu.activeSelf) { EndCredits(); }
+        }
+    }
+
     // This method will be called when the button to view credits is pressed
     public void StartCredits()
     {
