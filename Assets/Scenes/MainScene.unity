@@ -1825,6 +1825,10 @@ MonoBehaviour:
     - {fileID: 6931524175517771325, guid: cb05d12292457144ebb1e7279a183c55, type: 3}
     - {fileID: 4793257065431973938, guid: 76f58c7107fcf3745bd15601c52168b4, type: 3}
     values: 040000000200000002000000
+  obstaclesToBeRemoved:
+    keys:
+    - {fileID: 3083783601260190548, guid: d93f8eef9849d184eb12772b5435dc4a, type: 3}
+    values: 02000000
 --- !u!114 &512579830
 MonoBehaviour:
   m_ObjectHideFlags: 0

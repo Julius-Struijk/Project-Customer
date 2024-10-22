@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1975737221033783634}
   - component: {fileID: 3504996602085364465}
   - component: {fileID: 2036204018061695231}
+  - component: {fileID: 9158619277878007155}
+  - component: {fileID: 6736806377007949433}
   m_Layer: 0
   m_Name: slime-anim_0
   m_TagString: Obstacle
@@ -27,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6931524175517771325}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.06, z: 0}
+  m_LocalPosition: {x: 0, y: 2.7, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -106,3 +108,40 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!136 &9158619277878007155
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6931524175517771325}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 4.8
+  m_Height: 9.120545
+  m_Direction: 1
+  m_Center: {x: 0, y: -1.47, z: 0}
+--- !u!114 &6736806377007949433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6931524175517771325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8322097eae787d94a8dd9d4b5bc43638, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinScore: 1
+  CoinSound: {fileID: 8300000, guid: 525aa07b28d582047a335ca1f0a0f22e, type: 3}

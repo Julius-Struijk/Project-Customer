@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1652444432339743596}
   - component: {fileID: 2508093464766806028}
   - component: {fileID: 6746888868335267494}
+  - component: {fileID: 8587314567266116565}
+  - component: {fileID: 1533620045992152318}
   m_Layer: 0
   m_Name: unicorn-anim_0
   m_TagString: Obstacle
@@ -27,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4793257065431973938}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 3.4, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -106,3 +108,40 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!136 &8587314567266116565
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4793257065431973938}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3.93
+  m_Height: 8.451491
+  m_Direction: 1
+  m_Center: {x: 0, y: -1.4665598, z: 0}
+--- !u!114 &1533620045992152318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4793257065431973938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8322097eae787d94a8dd9d4b5bc43638, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinScore: 1
+  CoinSound: {fileID: 8300000, guid: 525aa07b28d582047a335ca1f0a0f22e, type: 3}

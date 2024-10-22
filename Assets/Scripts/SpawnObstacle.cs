@@ -8,8 +8,9 @@ public class SpawnObstacle : MonoBehaviour
     [SerializeField] int spawnChancePercentage = 50;
     [SerializeField] List<GameObject> obstacles;
     [SerializeField] UDictionary<GameObject, int> obstaclesToBeAdded;
-    
-    float verticalBuffer = 1f;
+    [SerializeField] UDictionary<GameObject, int> obstaclesToBeRemoved;
+
+    //float verticalBuffer = 1f;
     float horizontalBuffer = 5f;
 
     // Start is called before the first frame update
@@ -17,6 +18,7 @@ public class SpawnObstacle : MonoBehaviour
     {
         RoadGenerator.OnRoadSpawn += ObstacleSpawn;
         ScoreBar.OnScoreStageChange += AddObstacles;
+        ScoreBar.OnScoreStageChange += RemoveObstacles;
     }
 
     void ObstacleSpawn(MeshRenderer road, Vector3 roadPosition)
@@ -30,8 +32,9 @@ public class SpawnObstacle : MonoBehaviour
             float spawnX = Random.Range(roadPosition.x - road.bounds.size.x / 2 + obstacleToSpawn.transform.localScale.x + horizontalBuffer, roadPosition.x + road.bounds.size.x / 2 - obstacleToSpawn.transform.localScale.x - horizontalBuffer);
 
             float spawnY;
-            if (obstacleToSpawn.transform.rotation.z >= 0.5f) { spawnY = roadPosition.y + obstacleToSpawn.transform.localScale.x + verticalBuffer; }
-            else {  spawnY = roadPosition.y + obstacleToSpawn.transform.localScale.y + verticalBuffer; }
+            Debug.Log("Obstacle local position is: " + obstacleToSpawn.transform.localPosition.y);
+            if (obstacleToSpawn.transform.rotation.z >= 0.5f) { spawnY = roadPosition.y + obstacleToSpawn.transform.localScale.x + obstacleToSpawn.transform.localPosition.y; }
+            else {  spawnY = roadPosition.y + obstacleToSpawn.transform.localScale.y + obstacleToSpawn.transform.localPosition.y; }
 
             float spawnZ = Random.Range(roadPosition.z - road.bounds.size.z / 2, roadPosition.z + road.bounds.size.z / 2);
 
@@ -63,9 +66,32 @@ public class SpawnObstacle : MonoBehaviour
         }
     }
 
+    void RemoveObstacles(string stageName, int stageNumber)
+    {
+        if (obstaclesToBeRemoved != null)
+        {
+            for (int i = obstaclesToBeRemoved.Keys.Count - 1; i >= 0; i--)
+            {
+                GameObject removeObstacle = obstaclesToBeRemoved.Keys[i];
+                int removeStage = obstaclesToBeRemoved.Values[i];
+
+                // Ends the loop if the removestage of the obstacle is higher than the current stage number.
+                if (removeStage > stageNumber) { break; }
+                else
+                {
+                    Debug.Log(string.Format("Removing {0} from the obstacle pool at stage {1}", removeObstacle.name, removeStage));
+                    obstacles.Remove(removeObstacle);
+                    // Removing the obstacle from the to be removed list since it's now been removed from the main list.
+                    obstaclesToBeRemoved.Remove(removeObstacle);
+                }
+            }
+        }
+    }
+
     private void OnDestroy()
     {
         RoadGenerator.OnRoadSpawn -= ObstacleSpawn;
         ScoreBar.OnScoreStageChange -= AddObstacles;
+        ScoreBar.OnScoreStageChange -= RemoveObstacles;
     }
 }
