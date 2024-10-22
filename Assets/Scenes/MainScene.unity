@@ -786,6 +786,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 394747864}
     m_Modifications:
+    - target: {fileID: 2496388134216092085, guid: be1c73d1b0f067044a149ae393028df8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -455694967, guid: 22cfad356907adc41abd75b4a8728236, type: 3}
     - target: {fileID: 4140109358685981307, guid: be1c73d1b0f067044a149ae393028df8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -884,7 +888,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4246221464119215737, guid: be1c73d1b0f067044a149ae393028df8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5926682698350794408, guid: be1c73d1b0f067044a149ae393028df8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1905,18 +1913,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modeObjectPairs:
     keys:
+    - {fileID: 0}
+    - {fileID: 0}
     - {fileID: 2057652750}
     - {fileID: 451061750}
-    - {fileID: 0}
-    - {fileID: 0}
     - {fileID: 1367857907}
     - {fileID: 0}
     - {fileID: 0}
     values:
-    - {fileID: 1844647838}
-    - {fileID: 1453285023}
     - {fileID: 942166975}
     - {fileID: 1588899836}
+    - {fileID: 1844647838}
+    - {fileID: 1453285023}
     - {fileID: 354793882}
     - {fileID: 1830471028}
     - {fileID: 2106412311}
@@ -3269,7 +3277,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 629cc1212a7ddc948aed474e62506d91, type: 3}
   m_Name: 
@@ -4235,6 +4243,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4951155961439964388, guid: c82fc93112fb27742ab0fb2522b434a4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 529415687, guid: 826801d8986d84243ae974154c2eceda, type: 3}
     - target: {fileID: 5772500933194355754, guid: c82fc93112fb27742ab0fb2522b434a4, type: 3}
       propertyPath: m_Name
       value: Neon_mode
@@ -4421,6 +4433,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4543657597535599462, guid: 6c59f1d1627937248aa78656e83b62e1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2143145636, guid: 30aa4acda4371a44f980615ede0aebf3, type: 3}
     - target: {fileID: 5315023613954067479, guid: 6c59f1d1627937248aa78656e83b62e1, type: 3}
       propertyPath: m_Name
       value: Schizolines_eyes
@@ -6232,6 +6248,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7951933581638934663, guid: 64ee055374baca941adecc9fee44ee92, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1684793305, guid: 7e1a383511e220d4aa86d22a762a5677, type: 3}
     - target: {fileID: 8860999648155631810, guid: 64ee055374baca941adecc9fee44ee92, type: 3}
       propertyPath: m_Name
       value: Schizolines_eyes_neon
