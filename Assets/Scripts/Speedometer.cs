@@ -13,7 +13,8 @@ public class Speedometer : MonoBehaviour
     public float glitchDuration = 0.1f; 
     public float glitchInterval = 5f;   
     public float maxDisplacement = 10f;  
-    public float maxScale = 1.2f;        
+    public float maxScale = 1.2f;
+    float maxSpeed = 165f;
 
     private Vector3 originalPosition;  
     private Vector3 originalScale;     
@@ -30,7 +31,8 @@ public class Speedometer : MonoBehaviour
     {
         // Get the current speed from VelocityTools and update the needle
         vehicleSpeed = velocityTools.GetForwardVelocity().magnitude * 3.6f;  // Convert m/s to km/h
-        vehicleSpeed = Mathf.Clamp(vehicleSpeed, 0, 55);  // Clamp to 55 max speed
+        //Debug.Log("Vehicle speed in kilometers per hour: " + vehicleSpeed);
+        vehicleSpeed = Mathf.Clamp(vehicleSpeed, 0, maxSpeed);  // Clamp to max speed in km/h
         UpdateNeedle();
     }
 
@@ -39,7 +41,7 @@ public class Speedometer : MonoBehaviour
         desiredPosition = startPosition - endPosition;
 
         // Normalize the speed to the 0-1 range for needle rotation
-        float temp = vehicleSpeed / 55f;
+        float temp = vehicleSpeed / maxSpeed;
         needle.transform.eulerAngles = new Vector3(0, 0, (startPosition - temp * desiredPosition));
     }
 
