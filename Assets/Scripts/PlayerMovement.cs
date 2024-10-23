@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         //rb.freezeRotation = true;
+
+        transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     void Update()
