@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 22f4d2437dc26604097cf0cdc952f510
+guid: 16271532ca44bca4ab4cd3900a8c861e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 8192
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HIGH FOV 3D SCHIZO LINES_0
+      name: Eyes effect_0
       rect:
         serializedVersion: 2
         x: 0
@@ -111,35 +111,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 591dc680f688b8c4190bb4a2952349b6
-      internalID: 531206226
+      spriteID: 1c0a3ae56c6406b44bed51f111a6986a
+      internalID: 57789294
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HIGH FOV 3D SCHIZO LINES_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1920
-        height: 1080
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 174380d2d12a5314fba0434390a81d05
-      internalID: 865291802
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HIGH FOV 3D SCHIZO LINES_2
+      name: Eyes effect_1
       rect:
         serializedVersion: 2
         x: 1920
@@ -153,14 +132,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ddd6c4a526fbe2e49b6fc4285a27b93f
-      internalID: -1838659253
+      spriteID: a44c4b12e226c554dbd9469f6d50ae3c
+      internalID: -1048152805
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HIGH FOV 3D SCHIZO LINES_3
+      name: Eyes effect_2
       rect:
         serializedVersion: 2
         x: 3840
@@ -174,35 +153,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02318184b548fe043a95c9a0cc7d30f2
-      internalID: -2053603808
+      spriteID: 7eb0a25b28a17ba4891d042996144a32
+      internalID: 1086345392
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HIGH FOV 3D SCHIZO LINES_4
-      rect:
-        serializedVersion: 2
-        x: 5760
-        y: 0
-        width: 1920
-        height: 1080
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0dbdcbf7cf7d8f0479cff789ea1ba8dc
-      internalID: -1404108607
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HIGH FOV 3D SCHIZO LINES_5
+      name: Eyes effect_3
       rect:
         serializedVersion: 2
         x: 7680
@@ -216,14 +174,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cab9651a38211644dbce6c0f6d9713fc
-      internalID: 1078069344
+      spriteID: db57038b60e918242b7c8468013fbbd5
+      internalID: 615301053
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HIGH FOV 3D SCHIZO LINES_6
+      name: Eyes effect_4
+      rect:
+        serializedVersion: 2
+        x: 5761
+        y: 0
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d38673293b8e8b64b9e9ae8b54402edf
+      internalID: 1729116064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eyes effect_5
       rect:
         serializedVersion: 2
         x: 9600
@@ -237,14 +216,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ad9301c3fcf36c478c8c0a981805589
-      internalID: -1889801797
+      spriteID: cf9a3a78c4121e846a9c9bf8f9367885
+      internalID: 1862898801
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HIGH FOV 3D SCHIZO LINES_7
+      name: Eyes effect_6
       rect:
         serializedVersion: 2
         x: 11520
@@ -258,14 +237,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d031fc836358e0647a9051b04fd16f52
-      internalID: -2077251632
+      spriteID: 39303acf642aece44abb6970c1147261
+      internalID: 165330073
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HIGH FOV 3D SCHIZO LINES_8
+      name: Eyes effect_7
       rect:
         serializedVersion: 2
         x: 13440
@@ -279,14 +258,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b95d258050f2dc34bbafa0fe7ce9cd1e
-      internalID: -1466679214
+      spriteID: 87b364e297349334d8e71ae4c11fda87
+      internalID: -1371445124
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HIGH FOV 3D SCHIZO LINES_9
+      name: Eyes effect_8
       rect:
         serializedVersion: 2
         x: 15360
@@ -300,14 +279,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da37b8876c4996e4285d103c78e56381
-      internalID: -965237942
+      spriteID: 27ec0cc96b8d04b4e9ccecd11c035c60
+      internalID: 689739627
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HIGH FOV 3D SCHIZO LINES_10
+      name: Eyes effect_9
       rect:
         serializedVersion: 2
         x: 17280
@@ -321,14 +300,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aeacaba0af78e8c4aac141a5210ef93b
-      internalID: -1570706824
+      spriteID: 3e5da7f9f5ced4645bdd2651f8831fd9
+      internalID: 47681894
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HIGH FOV 3D SCHIZO LINES_11
+      name: Eyes effect_10
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfe1b6c29dd1bf3449a368cbc5e7790a
+      internalID: -141701202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eyes effect_11
       rect:
         serializedVersion: 2
         x: 19200
@@ -342,14 +342,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a2214288e17ee44b9175c2f57b2b477
-      internalID: 1078803375
+      spriteID: 69c33049191356d4d8bfd97e15bb2eeb
+      internalID: 1067679015
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HIGH FOV 3D SCHIZO LINES_12
+      name: Eyes effect_12
       rect:
         serializedVersion: 2
         x: 21120
@@ -363,8 +363,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 838e4267992b9ff4687cb81fd3285428
-      internalID: -1996214926
+      spriteID: c6e75fce1a68c3e409447a3e2ec601bd
+      internalID: -1060405129
       vertices: []
       indices: 
       edges: []
@@ -372,7 +372,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 843f4f21c149ad440a06cbfab57fdf92
+    spriteID: 8d1bab0ddff384f49aad4ce916253dea
     internalID: 0
     vertices: []
     indices: 
@@ -380,19 +380,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      HIGH FOV 3D SCHIZO LINES_0: 531206226
-      HIGH FOV 3D SCHIZO LINES_1: 865291802
-      HIGH FOV 3D SCHIZO LINES_10: -1570706824
-      HIGH FOV 3D SCHIZO LINES_11: 1078803375
-      HIGH FOV 3D SCHIZO LINES_12: -1996214926
-      HIGH FOV 3D SCHIZO LINES_2: -1838659253
-      HIGH FOV 3D SCHIZO LINES_3: -2053603808
-      HIGH FOV 3D SCHIZO LINES_4: -1404108607
-      HIGH FOV 3D SCHIZO LINES_5: 1078069344
-      HIGH FOV 3D SCHIZO LINES_6: -1889801797
-      HIGH FOV 3D SCHIZO LINES_7: -2077251632
-      HIGH FOV 3D SCHIZO LINES_8: -1466679214
-      HIGH FOV 3D SCHIZO LINES_9: -965237942
+      Eyes effect_0: 57789294
+      Eyes effect_1: -1048152805
+      Eyes effect_10: -141701202
+      Eyes effect_11: 1067679015
+      Eyes effect_12: -1060405129
+      Eyes effect_2: 1086345392
+      Eyes effect_3: 615301053
+      Eyes effect_4: 1729116064
+      Eyes effect_5: 1862898801
+      Eyes effect_6: 165330073
+      Eyes effect_7: -1371445124
+      Eyes effect_8: 689739627
+      Eyes effect_9: 47681894
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
