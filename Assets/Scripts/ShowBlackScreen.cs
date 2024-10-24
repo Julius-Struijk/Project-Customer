@@ -15,6 +15,7 @@ public class ShowBlackScreen : MonoBehaviour
     bool blinkingDown = false;
     float blinkAlpha = 0f;
 
+
     private void Start()
     {
         canvas = GetComponent<CanvasRenderer>();
@@ -59,10 +60,9 @@ public class ShowBlackScreen : MonoBehaviour
 
     void Blackout()
     {
-        //Debug.Log("Activating blackout");
         canvas.SetAlpha(255);
 
-        if(OnBlackout != null) { OnBlackout(0); }
+        if (OnBlackout != null) { OnBlackout(3); }
     }
 
     private void OnDestroy()

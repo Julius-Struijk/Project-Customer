@@ -13,6 +13,20 @@ public class ChildEffect : MonoBehaviour
     [SerializeField] float slowDownFactor = 0.2f;
     [SerializeField] float slowDownTime = 2f;
 
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = gameObject.AddComponent<AudioSource>();
+
+        AudioClip tireSkidSound = Resources.Load<AudioClip>("tire skid");
+
+        if (tireSkidSound != null)
+        {
+            audioSource.clip = tireSkidSound;
+        }
+    }
+
     private void Update()
     {
         // Revert time back to normal after the slow down.
@@ -21,13 +35,17 @@ public class ChildEffect : MonoBehaviour
         Time.fixedDeltaTime += (1f / slowDownTime) * Time.unscaledDeltaTime;
         Time.fixedDeltaTime = Mathf.Clamp(0.02f, 0f, 1f);
         //Debug.Log(string.Format("TimeScale: {0} DeltaTime: {1}", Time.timeScale, Time.fixedDeltaTime));
-
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
+            if (audioSource != null && audioSource.clip != null)
+            {
+                audioSource.Play();
+            }
+
             //Flip the visibility of the models within the child prefab.
             for (int i = 0; i < transform.childCount; i++)
             {
@@ -40,7 +58,7 @@ public class ChildEffect : MonoBehaviour
             Debug.Log("Slow motion activated");
             Time.timeScale = slowDownFactor;
             Time.fixedDeltaTime = Time.time * 0.02f;
-            if(OnSlowMotion != null) { OnSlowMotion(); }
+            if (OnSlowMotion != null) { OnSlowMotion(); }
         }
     }
 

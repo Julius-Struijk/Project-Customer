@@ -34,4 +34,12 @@ public class PlayerLook : MonoBehaviour
         PlayerOrientation.rotation = Quaternion.Euler(xRotation, yRotation, 0);
 
     }
+
+    public void SetSensitivity(float sensitivity)
+    {
+        sensX = sensitivity;
+        sensY = sensitivity;
+
+    }
+
 }

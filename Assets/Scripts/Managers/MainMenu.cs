@@ -36,6 +36,8 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
+        Time.timeScale = 0f;
+
         if (mainMenuMusic != null)
         {
             mainMenuMusic.Stop();
