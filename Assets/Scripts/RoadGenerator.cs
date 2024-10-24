@@ -15,6 +15,7 @@ public class RoadGenerator : MonoBehaviour
 
     GameObject objectToSpawn;
     string objectTag;
+    LayerMask layer;
     Terrain terrain;
     MeshRenderer mr;
 
@@ -38,7 +39,10 @@ public class RoadGenerator : MonoBehaviour
         // Get the tag of the object that is being spawned for specific use cases depending on the object.
         objectToSpawn = objectVariants[UnityEngine.Random.Range(0, objectVariants.Count)];
         objectTag = objectToSpawn.tag;
+        if(objectTag == "RegRoad") { layer = LayerMask.GetMask("Ground"); }
+        else { layer = LayerMask.GetMask("Default"); }
         Debug.Log("Object tag is: " + objectTag);
+        Debug.Log("Object layer is: " + layer);
     }
 
     void FixedUpdate()
@@ -75,7 +79,7 @@ public class RoadGenerator : MonoBehaviour
     void SpawnObject(Vector3 raycastPosition, Vector3 movementDirection)
     {
 
-        if (Physics.Raycast(raycastPosition, transform.up * -1, out hitInfo) && hitInfo.collider.CompareTag(objectTag))
+        if (Physics.Raycast(raycastPosition, transform.up * -1, out hitInfo, 999f, layer) && hitInfo.collider.CompareTag(objectTag))
         {
             //Debug.Log(string.Format("There is a {0} infront of the player at: {1}.", objectTag, hitInfo.transform.position));
             prevHitInfo = hitInfo;
@@ -120,20 +124,27 @@ public class RoadGenerator : MonoBehaviour
                     if(objectParent == null) { Instantiate(objectToSpawn, spawnPosition, prevHitInfo.transform.rotation); }
                     else 
                     {
-                        //Debug.Log("Setting terrain visibility during stage change.");
-                        // Set the terrain visibility to what the previous terrain was set to.
-                        Terrain prevTerrain = prevHitInfo.collider.gameObject.GetComponent<Terrain>();
-                        terrain.enabled = prevTerrain.enabled;
+                        if(objectTag == "RegTerrain" || objectTag == "NeonTerrain")
+                        {
+                            //Debug.Log("Setting terrain visibility during stage change.");
+                            // Set the terrain visibility to what the previous terrain was set to.
+                            Terrain prevTerrain = prevHitInfo.collider.gameObject.GetComponent<Terrain>();
+                            terrain.enabled = prevTerrain.enabled;
+                        }
+                        else if(objectTag == "RegRoad" || objectTag == "NeonRoad")
+                        {
+                            //Debug.Log("Having road match previous road visibility.");
+                            MeshRenderer prevMeshRenderer = prevHitInfo.collider.gameObject.GetComponent<MeshRenderer>();
+                            mr.enabled = prevMeshRenderer.enabled;
+
+                            //After spawning a road piece that's visible, the delegate will be fired and there's a chance a obstacle will be spawned as well.
+                            if (OnRoadSpawn != null && mr.enabled) { OnRoadSpawn(mr, spawnPosition); }
+                        }
+
                         Instantiate(objectToSpawn, spawnPosition, prevHitInfo.transform.rotation, objectParent.transform); 
                     }
                     //Debug.Log(string.Format("Spawned new {0} at {1} to {2}.", objectTag, spawnPosition, objectParent));
                     prevSpawnPosition = spawnPosition;
-
-                    if(objectTag == "Road")
-                    {
-                        //After spawning a road piece, the delegate will be fired and there's a chance a obstacle will be spawned as well.
-                        if (OnRoadSpawn != null) { OnRoadSpawn(mr, spawnPosition); }
-                    }
                 }
                 //else { Debug.Log(string.Format("Duplicate {0} not spawned.", objectTag)); }
             }
@@ -143,7 +154,7 @@ public class RoadGenerator : MonoBehaviour
 
     void DeleteObject(Vector3 raycastPosition)
     {
-        if (Physics.Raycast(raycastPosition, transform.up * -1, out hitInfo))
+        if (Physics.Raycast(raycastPosition, transform.up * -1, out hitInfo, 999f, layer))
         {
             if (hitInfo.collider.CompareTag(objectTag))
             {

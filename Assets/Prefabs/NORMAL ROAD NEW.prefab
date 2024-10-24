@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9a7be747314a4504b8812641a6e7cffb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -108.23013
+      value: -1.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9a7be747314a4504b8812641a6e7cffb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 8.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9a7be747314a4504b8812641a6e7cffb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 973.8452
+      value: 40.512417
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9a7be747314a4504b8812641a6e7cffb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -38,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9a7be747314a4504b8812641a6e7cffb, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9a7be747314a4504b8812641a6e7cffb, type: 3}
       propertyPath: m_LocalRotation.y
@@ -46,7 +46,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9a7be747314a4504b8812641a6e7cffb, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9a7be747314a4504b8812641a6e7cffb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -73,8 +73,12 @@ PrefabInstance:
       value: NORMAL ROAD NEW
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9a7be747314a4504b8812641a6e7cffb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9a7be747314a4504b8812641a6e7cffb, type: 3}
       propertyPath: m_TagString
-      value: Road
+      value: RegRoad
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

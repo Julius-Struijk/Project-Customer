@@ -44,11 +44,16 @@ public class StageSwitch : MonoBehaviour
 
             if (regularObject != null)
             {
-                // Create an exception for terrain where the visibility is disabled instead of the active status, so they can keep being generated in the background.
+                // Create an exception for terrain and roads where the visibility is disabled instead of the active status, so they can keep being generated in the background.
                 if (regularObject.CompareTag("RegTerrain") && neonObject.CompareTag("NeonTerrain"))
                 {
                     SetTerrainChildren(regularObject, false);
                     SetTerrainChildren(neonObject, true);
+                }
+                else if (regularObject.CompareTag("RegRoad") && neonObject.CompareTag("NeonRoad"))
+                {
+                    SetRoadChildren(regularObject, false);
+                    SetRoadChildren(neonObject, true);
                 }
                 else
                 {
@@ -87,6 +92,11 @@ public class StageSwitch : MonoBehaviour
                     SetTerrainChildren(neonObject, false);
                     SetTerrainChildren(regularObject, true);
                 }
+                else if (regularObject.CompareTag("RegRoad") && neonObject.CompareTag("NeonRoad"))
+                {
+                    SetRoadChildren(neonObject, false);
+                    SetRoadChildren(regularObject, true);
+                }
                 else
                 {
                     neonObject.SetActive(false);
@@ -114,6 +124,16 @@ public class StageSwitch : MonoBehaviour
             GameObject child = terrainParent.transform.GetChild(i).gameObject;
             Terrain childTerrain = child.GetComponent<Terrain>();
             childTerrain.enabled = visibility;
+        }
+    }
+
+    void SetRoadChildren(GameObject roadParent, bool visibility)
+    {
+        for (int i = 0; i < roadParent.transform.childCount; i++)
+        {
+            GameObject child = roadParent.transform.GetChild(i).gameObject;
+            MeshRenderer childMeshRenderer = child.GetComponent<MeshRenderer>();
+            childMeshRenderer.enabled = visibility;
         }
     }
 

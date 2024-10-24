@@ -9,6 +9,8 @@ TagManager:
   - Car
   - RegTerrain
   - NeonTerrain
+  - RegRoad
+  - NeonRoad
   layers:
   - Default
   - TransparentFX
