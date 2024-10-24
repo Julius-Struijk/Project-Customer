@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 4
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -1102,7 +1102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4246221464119215737, guid: be1c73d1b0f067044a149ae393028df8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5926682698350794408, guid: be1c73d1b0f067044a149ae393028df8, type: 3}
       propertyPath: m_Enabled
@@ -3014,7 +3014,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 100000
+  m_Intensity: 25.688274
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -3091,7 +3091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 100000
+  m_Intensity: 25.688274
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -4090,13 +4090,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 629cc1212a7ddc948aed474e62506d91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 369863258}
-  fovChangeSpeed: 0.25
+  fovChangeSpeed: 0.05
 --- !u!1 &969558500
 GameObject:
   m_ObjectHideFlags: 0
@@ -7576,7 +7576,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2184964076484398543, guid: 64ee055374baca941adecc9fee44ee92, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 108.56684
+      value: 108.5668
       objectReference: {fileID: 0}
     - target: {fileID: 2184964076484398543, guid: 64ee055374baca941adecc9fee44ee92, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7596,11 +7596,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2184964076484398543, guid: 64ee055374baca941adecc9fee44ee92, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 389.87985
+      value: 389.8799
       objectReference: {fileID: 0}
     - target: {fileID: 2184964076484398543, guid: 64ee055374baca941adecc9fee44ee92, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 107.61284
+      value: 107.6128
       objectReference: {fileID: 0}
     - target: {fileID: 2184964076484398543, guid: 64ee055374baca941adecc9fee44ee92, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
