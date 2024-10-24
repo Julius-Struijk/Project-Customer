@@ -5345,8 +5345,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d35d876696b73104283798e0c2c110cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensX: 400
-  sensY: 400
+  sensX: 250
+  sensY: 250
   PlayerOrientation: {fileID: 136944851}
 --- !u!114 &694101277
 MonoBehaviour:
