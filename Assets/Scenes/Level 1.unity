@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 4
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -19676,8 +19676,61 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 154519540999757284, guid: 778afd39b09a24e42909dac350983eac, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4074474749445331101}
+    - targetCorrespondingSourceObject: {fileID: 154519540999757284, guid: 778afd39b09a24e42909dac350983eac, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4074474749445331100}
   m_SourcePrefab: {fileID: 100100000, guid: 778afd39b09a24e42909dac350983eac, type: 3}
+--- !u!1 &4074474749445331099 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 154519540999757284, guid: 778afd39b09a24e42909dac350983eac, type: 3}
+  m_PrefabInstance: {fileID: 4074474749445331098}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &4074474749445331100
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4074474749445331099}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1718.377, y: 1112.8903, z: 1018.29987}
+  m_Center: {x: 0, y: 0, z: -660.32117}
+--- !u!65 &4074474749445331101
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4074474749445331099}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 861.6633, y: 522.62274, z: 2338.9458}
+  m_Center: {x: 428.35623, y: -295.13348, z: 0}
 --- !u!33 &4103506173138212436
 MeshFilter:
   m_ObjectHideFlags: 0
