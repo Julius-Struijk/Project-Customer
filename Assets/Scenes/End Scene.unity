@@ -539,9 +539,9 @@ MonoBehaviour:
   - {fileID: 1035574527}
   - {fileID: 1563396565}
   - {fileID: 303511346}
-  initialDelay: 2
-  textDisplayInterval: 1.5
-  textDisplayDuration: 3
+  initialDelay: 3
+  textDisplayInterval: 2
+  textDisplayDuration: 5
 --- !u!1 &1035574527
 GameObject:
   m_ObjectHideFlags: 0

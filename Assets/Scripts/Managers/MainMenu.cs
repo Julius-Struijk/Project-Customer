@@ -30,6 +30,7 @@ public class MainMenu : MonoBehaviour
             if (isVideoPlaying)
             {
                 SkipCinematic();
+
             }
         }
     }
@@ -63,6 +64,7 @@ public class MainMenu : MonoBehaviour
     private void OnCinematicEnd(VideoPlayer vp)
     {
         isVideoPlaying = false;
+        Time.timeScale = 1f;
         SceneManager.LoadScene(gameSceneName);
     }
 
@@ -72,6 +74,7 @@ public class MainMenu : MonoBehaviour
         {
             isVideoPlaying = false;
             cinematicVideo.Stop();
+            Time.timeScale = 1f;
             SceneManager.LoadScene(gameSceneName);
         }
     }
